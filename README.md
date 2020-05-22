@@ -68,8 +68,6 @@ abstract class ISessionsV1 {
 
   Future<SessionV1> closeSession(String correlationId, String sessionId);
 
-  Future closeExpiredSessions(String correlationId);
-
   Future<SessionV1> deleteSessionById(String correlationId, String sessionId);
 }
 ```

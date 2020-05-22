@@ -71,6 +71,7 @@ class SessionsMemoryPersistence
     var now = DateTime.now();
     item.open_time = now;
     item.request_time = now;
+    item.active = item.active ?? true;
 
     return super.create(correlationId, item);
   }

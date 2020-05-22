@@ -165,7 +165,7 @@ class SessionsController
   Future<SessionV1> storeSessionData(
       String correlationId, String sessionId, data) {
     return persistence.updatePartially(correlationId, sessionId,
-        AnyValueMap.fromTuples(['request_time', DateTime.now(), 'data', data]));
+        AnyValueMap.fromValue({'request_time': DateTime.now(), 'data': data}));
   }
 
   /// Updates a session's user.
@@ -178,7 +178,7 @@ class SessionsController
   Future<SessionV1> updateSessionUser(
       String correlationId, String sessionId, user) {
     return persistence.updatePartially(correlationId, sessionId,
-        AnyValueMap.fromTuples(['request_time', DateTime.now(), 'user', user]));
+        AnyValueMap.fromValue({'request_time': DateTime.now(), 'user': user}));
   }
 
   /// Close a session by it's id.
@@ -192,18 +192,13 @@ class SessionsController
     return persistence.updatePartially(
         correlationId,
         sessionId,
-        AnyValueMap.fromTuples([
-          'active',
-          false,
-          'request_time',
-          DateTime.now(),
-          'close_time',
-          DateTime.now(),
-          'data',
-          null,
-          'user',
-          null
-        ]));
+        AnyValueMap.fromValue({
+          'active': false,
+          'request_time': DateTime.now(),
+          'close_time': DateTime.now(),
+          'data': null,
+          'user': null
+        }));
   }
 
   /// Close an expired sessions.
