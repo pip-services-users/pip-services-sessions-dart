@@ -1,6 +1,6 @@
 name: pip_services_sessions
-version: "1.0.1"
-description: Sessions microservice for Pip.Services in Dart. It opens and closes user sessions and stores sessiond data.
+version: "1.0.0"
+description: Sessions microservice for Pip.Services in Dart. It opens and closes user sessions and stores session data.
 homepage: https://github.com/pip-services-users/pip-services-sessions-dart
 
 environment:
