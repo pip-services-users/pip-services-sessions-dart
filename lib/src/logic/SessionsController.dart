@@ -83,14 +83,15 @@ class SessionsController
   @override
   Future open(String correlationId) async {
     if (isOpen()) {
-      return Future.delayed(Duration(), () {
+      return;
+    }
+    return Future.delayed(Duration(), () {
         _cleanupTimer = FixedRateTimer(() {
           _logger.info(correlationId, 'Closing expired user sessions');
           closeExpiredSessions(correlationId);
-        }, _cleanupInterval);
+        }, _cleanupInterval, 0);
         _cleanupTimer.start();
-      });
-    }
+    });
   }
 
   /// Closes session and frees used resources.
